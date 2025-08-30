@@ -1,0 +1,31 @@
+name: Mirror Repo A into Repo B
+
+on:
+  schedule:
+    - cron: "0 0 * * *"   # runs daily at midnight UTC
+  workflow_dispatch:       # manual trigger button
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo B
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+
+      - name: Add Repo A as upstream
+        run: |
+          git remote add upstream https://github.com/VictorAnimasahun/EnglishQuizApp.git
+          git fetch upstream
+
+      - name: Reset Repo B to match Repo A
+        run: |
+          git checkout main || git checkout -b main
+          git reset --hard upstream/main
+          git push origin main --force
