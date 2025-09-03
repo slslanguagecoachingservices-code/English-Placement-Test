@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C2 English Competence Test</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+	<header>
+	<h1>C2 English Competence Test</h1>
+	<p>Sections 1–5</p>
+	</header>
+
+	<div class="container">
+
+	<!-- Section 1 -->
+	<div class="section active" id="section-1">
+  <h3>Section 1: Speaking & Pronunciation (C2 Level)</h3>
+
+  <!-- Task Template -->
+  <div class="task">
+    <h4>Task 1 – Abstract Discussion</h4>
+    <p><em>Prompt:</em> “To what extent do you think freedom of speech should be limited in modern societies? Discuss possible consequences of both unrestricted and restricted expression.”</p>
+    <div class="recorder" data-task="1"></div>
+	<button id="downloadRecording">Download Recording</button>
+  </div>
+
+  <div class="task">
+    <h4>Task 2 – Interpretation of Data</h4>
+    <p><em>Prompt:</em> “Summarize the main findings and predict two long-term consequences that may arise from these trends.”</p>
+    <p><strong>(Note: A chart/infographic will be displayed here)</strong></p>
+    <div class="recorder" data-task="2"></div>
+	<button id="downloadRecording">Download Recording</button>
+  </div>
+
+  <div class="task">
+    <h4>Task 3 – Persuasive Response</h4>
+    <p><em>Prompt:</em> “Imagine that your city is about to ban private cars in the downtown area. Convince the mayor either to support or oppose this ban, addressing both environmental and economic concerns.”</p>
+    <div class="recorder" data-task="3"></div>
+	<button id="downloadRecording">Download Recording</button>
+  </div>
+
+  <div class="task">
+    <h4>Task 4 – Pronunciation & Stress</h4>
+    <p><em>Read aloud:</em> “Rarely had the complexity of the situation been so profoundly underestimated, yet the implications of such negligence were anything but trivial.”</p>
+    <div class="recorder" data-task="4"></div>
+	<button id="downloadRecording">Download Recording</button>
+  </div>
+
+  <div class="task">
+    <h4>Task 5 – Spontaneous Storytelling</h4>
+    <p><em>Prompt:</em> “Tell me about a time when you completely misjudged a situation, what led to your mistake, and what you learned. Use advanced connectors such as nonetheless, notwithstanding, in retrospect, conversely, paradoxically.”</p>
+    <div class="recorder" data-task="5"></div>
+	<button id="downloadRecording">Download Recording</button>
+  </div>
+</div>
+
+	<!-- Section 2 -->
+	<div class="section" id="section-2">
+	<h3>Section 2: Listening (C2 Level)</h3>
+
+	<!-- Audio Placeholder -->
+	<div class="task">
+		<h4>Audio</h4>
+		<audio controls>
+		<source src="../audio/Listening_Test_Audio.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</audio>
+	</div>
+
+	<!-- Toggle Script -->
+	<div class="task">
+		<button type="button" onclick="toggleScript()">Show/Hide Listening Script</button>
+		<div id="listening-script" style="display:none; margin-top:10px; background:#fff0f5; padding:12px; border-radius:8px; font-size:14px;">
+		<p><em>
+		"When people imagine the history of innovation, they often picture a lone genius working tirelessly in isolation, eventually unveiling a revolutionary breakthrough. Yet, this narrative is misleading. Most transformative inventions were not sudden strokes of brilliance, but rather the culmination of countless incremental steps, frequently shaped by collaboration, error, and even sheer accident. The discovery of penicillin, for instance, was hardly the outcome of a meticulous experiment; instead, it emerged from Alexander Fleming’s seemingly trivial oversight—neglecting to clean a petri dish.
+		</em></p>
+		<p><em>
+		Equally significant is the social and economic context in which innovations unfold. The steam engine did not transform society merely because of its mechanical efficiency, but because it aligned with the needs of an industrializing Europe eager for faster transport and mass production. Similarly, our current fascination with artificial intelligence is not solely due to its technical sophistication; it reflects broader cultural anxieties about human obsolescence and an appetite for efficiency that borders on obsession.
+		</em></p>
+		<p><em>
+		Thus, to attribute innovation to individual brilliance alone is to misunderstand its essence. What truly propels human progress is the intricate interplay between chance, collaboration, and societal demand—factors far messier, and far more human, than the myth of the solitary genius would suggest."
+		</em></p>
+		</div>
+	</div>
+
+	<!-- Questions -->
+	<div class="task">
+		<h4>Q1 – Multiple Choice (Main Idea)</h4>
+		<p>The central argument of the talk is that:</p>
+		<label><input type="radio" name="q1"> a) Innovation primarily arises from solitary genius working in isolation.</label><br>
+		<label><input type="radio" name="q1"> b) Most inventions are products of chance, teamwork, and societal needs rather than individual brilliance.</label><br>
+		<label><input type="radio" name="q1"> c) The steam engine was more important than artificial intelligence in shaping human progress.</label><br>
+		<label><input type="radio" name="q1"> d) Fleming’s discovery of penicillin was entirely deliberate and systematic.</label>
+	</div>
+
+	<div class="task">
+		<h4>Q2 – Inference (Why?)</h4>
+		<p>What does the speaker imply by describing society’s fascination with artificial intelligence as “an appetite for efficiency that borders on obsession”?</p>
+		<label><input type="radio" name="q2"> a) Society values efficiency above almost everything else, sometimes irrationally.</label><br>
+		<label><input type="radio" name="q2"> b) AI is already more efficient than humans in every context.</label><br>
+		<label><input type="radio" name="q2"> c) Obsession with AI efficiency has eliminated all cultural anxieties.</label><br>
+		<label><input type="radio" name="q2"> d) The desire for efficiency is unique to the modern technological era.</label>
+	</div>
+
+	<div class="task">
+		<h4>Q3 – Paraphrase Recognition (Gap-fill)</h4>
+		<p>Complete the sentence using the listening passage (exact wording not required, but meaning must match):</p>
+		<p><em>The speaker argues that innovation is not merely a technical achievement but also depends on ______ and ______.</em></p>
+		<input type="text" placeholder="Type your answer here..." style="width:100%; padding:8px; border-radius:6px;">
+	</div>
+
+	<div class="task">
+		<h4>Q4 – Detail (Specific Example)</h4>
+		<p>According to the passage, what role did context play in the impact of the steam engine?</p>
+		<label><input type="radio" name="q4"> a) It became influential because its invention coincided with Europe’s industrialization needs.</label><br>
+		<label><input type="radio" name="q4"> b) It was efficient enough to transform society without external factors.</label><br>
+		<label><input type="radio" name="q4"> c) It spread widely because of its affordability to ordinary citizens.</label><br>
+		<label><input type="radio" name="q4"> d) It was rejected at first due to fears of unemployment.</label>
+	</div>
+
+	<div class="task">
+		<h4>Q5 – Critical Thinking (Beyond the Text)</h4>
+		<p>The speaker contrasts the “myth of the solitary genius” with the actual drivers of innovation. Which of the following best captures this contrast?</p>
+		<label><input type="radio" name="q5"> a) Genius is timeless, whereas context is temporary.</label><br>
+		<label><input type="radio" name="q5"> b) Inventions succeed mainly due to accidents, not intelligence.</label><br>
+		<label><input type="radio" name="q5"> c) Collaboration, chance, and social demand outweigh the role of isolated brilliance.</label><br>
+		<label><input type="radio" name="q5"> d) The best innovations are always unexpected and unplanned.</label>
+	</div>
+	</div>
+
+	<!-- Section 3 -->
+	<div class="section" id="section-3">
+	<h3>Section 3: Reading (C2 Level)</h3>
+
+	<!-- Reading Passage -->
+	<div class="task">
+		<h4>Reading Passage</h4>
+		<div style="max-height: 250px; overflow-y: auto; padding: 12px; background: #fefcff; border: 1px solid #e6e6fa; border-radius: 8px; font-size: 14px;">
+		<p><em>
+		"The concept of resilience has been widely adopted across disciplines, from ecology to psychology and economics. At first glance, resilience appears to denote a straightforward quality: the ability of a system or individual to ‘bounce back’ from adversity. Yet, on closer examination, the notion is far less simplistic. In ecological studies, resilience does not imply returning to a prior state, but rather the capacity of an ecosystem to absorb disturbances while continuing to function, even if in a transformed state. Likewise, in psychology, resilience is less about eliminating distress and more about sustaining meaningful engagement with life despite ongoing hardship.
+		</em></p>
+		<p><em>
+		However, the widespread embrace of resilience as a buzzword has generated criticism. Some scholars argue that valorizing resilience risks obscuring structural inequities by placing responsibility on individuals to adapt, rather than on institutions to reform. For example, exhorting workers to develop resilience in the face of exploitative labor conditions may normalize injustice rather than challenge it. In this sense, resilience can become complicit with systems of power, quietly reinforcing the very problems it purports to address.
+		</em></p>
+		<p><em>
+		On the other hand, rejecting resilience outright is equally problematic. To deny its significance is to overlook the undeniable fact that human and ecological systems alike do adapt, often in astonishingly creative ways. The challenge, therefore, lies in distinguishing between resilience as an empowering capacity and resilience as a rhetorical tool that excuses structural failure. Only by maintaining this distinction can we appreciate the concept’s complexity and avoid its misuse.
+		</em></p>
+		<p><em>
+		Ultimately, resilience is neither an unqualified virtue nor an empty cliché. It is a contested terrain, reflecting both the promise of human adaptability and the perils of overlooking the conditions that necessitate it in the first place."
+		</em></p>
+		</div>
+	</div>
+
+	<!-- Questions -->
+	<div class="task">
+		<h4>Q1 – Vocabulary-in-Context</h4>
+		<p>In the phrase “resilience can become complicit with systems of power,” the word <em>complicit</em> most nearly means:</p>
+		<label><input type="radio" name="r1"> a) Actively resisting</label><br>
+		<label><input type="radio" name="r1"> b) Passively supporting wrongdoing</label><br>
+		<label><input type="radio" name="r1"> c) Operating independently</label><br>
+		<label><input type="radio" name="r1"> d) Inevitably collapsing</label>
+	</div>
+
+	<div class="task">
+		<h4>Q2 – Paraphrase / Gap-fill</h4>
+		<p>Complete the sentence based on the text:</p>
+		<p><em>In ecological terms, resilience refers to the ability of a system to ______ while still continuing to function, even if in a different form.</em></p>
+		<input type="text" placeholder="Type your answer here..." style="width:100%; padding:8px; border-radius:6px;">
+	</div>
+
+	<div class="task">
+		<h4>Q3 – Inference (Critical Thinking)</h4>
+		<p>What criticism does the passage raise about the widespread use of resilience?</p>
+		<label><input type="radio" name="r3"> a) It distracts from systemic injustices by overemphasizing individual coping.</label><br>
+		<label><input type="radio" name="r3"> b) It is a meaningless concept with no real-world applications.</label><br>
+		<label><input type="radio" name="r3"> c) It suggests ecosystems always return to their original state after disturbance.</label><br>
+		<label><input type="radio" name="r3"> d) It proves individuals cannot adapt without institutional help.</label>
+	</div>
+
+	<div class="task">
+		<h4>Q4 – Detail / Multiple Choice</h4>
+		<p>According to the passage, why is rejecting resilience altogether problematic?</p>
+		<label><input type="radio" name="r4"> a) Because resilience has no universally accepted definition.</label><br>
+		<label><input type="radio" name="r4"> b) Because it ignores the genuine adaptive capacities of humans and ecosystems.</label><br>
+		<label><input type="radio" name="r4"> c) Because resilience always improves exploitative systems.</label><br>
+		<label><input type="radio" name="r4"> d) Because it proves institutions can never reform.</label>
+	</div>
+
+	<div class="task">
+		<h4>Q5 – Critical Evaluation</h4>
+		<p>Which of the following best reflects the author’s stance on resilience?</p>
+		<label><input type="radio" name="r5"> a) It is always positive and should be encouraged uncritically.</label><br>
+		<label><input type="radio" name="r5"> b) It is meaningless and should be abandoned.</label><br>
+		<label><input type="radio" name="r5"> c) It has both empowering potential and risks of misuse, depending on context.</label><br>
+		<label><input type="radio" name="r5"> d) It is only relevant in ecological and psychological studies, not social issues.</label>
+	</div>
+	</div>
+
+	<!-- Section 4 -->
+	<div class="section" id="section-4">
+	<h3>Section 4: Writing Skills (C2 Level)</h3>
+
+	<!-- Task 1 -->
+	<div class="task">
+		<h4>Task 1 – Formal Argument Essay</h4>
+		<p><strong>Instructions:</strong> Write 250–300 words.</p>
+		<p><em>"Some argue that technological innovation inevitably benefits society, while others contend that it often deepens inequality and erodes cultural values. To what extent do you agree or disagree? Support your response with well-reasoned arguments and examples."</em></p>
+		<textarea rows="10" placeholder="Type your essay here..."></textarea>
+	</div>
+
+	<!-- Task 2 -->
+	<div class="task">
+		<h4>Task 2 – Report Writing</h4>
+		<p><strong>Instructions:</strong> Draft a concise report (200–250 words).</p>
+		<p><em>"You are a policy analyst for a government department. Draft a concise report advising whether your city should prioritize investment in renewable energy infrastructure or in advanced digital technologies. Your report should weigh both short-term economic benefits and long-term sustainability."</em></p>
+		<textarea rows="10" placeholder="Type your report here..."></textarea>
+	</div>
+
+	<!-- Task 3 -->
+	<div class="task">
+		<h4>Task 3 – Critical Response</h4>
+		<p><strong>Instructions:</strong> Respond in 200–250 words.</p>
+		<p><em>"A recent article claims that resilience has become a dangerous distraction, encouraging individuals to adapt to harmful conditions rather than fight for change. Do you agree with this critique? Evaluate the strengths and weaknesses of this perspective."</em></p>
+		<textarea rows="10" placeholder="Type your response here..."></textarea>
+	</div>
+
+	<!-- Task 4 -->
+	<div class="task">
+		<h4>Task 4 – Creative Narrative with Constraints</h4>
+		<p><strong>Instructions:</strong> Write a short story (200–250 words).</p>
+		<p><em>Your story must include:</em></p>
+		<ul>
+		<li>A moment of miscommunication that has serious consequences.</li>
+		<li>At least three of the following words: paradox, hindsight, precarious, labyrinth, fleeting.</li>
+		</ul>
+		<textarea rows="10" placeholder="Type your story here..."></textarea>
+	</div>
+
+	<!-- Task 5 -->
+	<div class="task">
+		<h4>Task 5 – Formal Email (Register Test)</h4>
+		<p><strong>Instructions:</strong> Write 150–200 words.</p>
+		<p><em>"You are applying for a highly competitive international fellowship. Write a formal email to the selection committee highlighting your qualifications, experiences, and the specific ways you would contribute to the fellowship’s mission. Maintain an appropriately formal tone and avoid clichés."</em></p>
+		<textarea rows="8" placeholder="Type your email here..."></textarea>
+	</div>
+	</div>
+
+
+	<!-- Section 5 -->
+	<div class="section" id="section-5">
+	<h3>Section 5: Grammar & Vocabulary (C2 Level)</h3>
+
+	<!-- Q1 -->
+	<div class="task">
+		<h4>Q1 – Error Correction</h4>
+		<p>The sentence below contains two errors. Rewrite it correctly.</p>
+		<blockquote>"Hardly I had arrived to the conference when I realized I left my notes at home."</blockquote>
+		<textarea rows="3" placeholder="Rewrite the correct sentence here..."></textarea>
+	</div>
+
+	<!-- Q2 -->
+	<div class="task">
+		<h4>Q2 – Advanced Gap-fill (Collocations & Idiomatic Use)</h4>
+		<p>Complete the sentence with the most appropriate word/phrase:</p>
+		<p><em>"Although the minister’s speech was full of elegant rhetoric, it completely failed to ______ with the concerns of the ordinary citizens."</em></p>
+		<label><input type="radio" name="q2"> a) resonate</label><br>
+		<label><input type="radio" name="q2"> b) reverberate</label><br>
+		<label><input type="radio" name="q2"> c) echoe</label><br>
+		<label><input type="radio" name="q2"> d) reverence</label>
+	</div>
+
+	<!-- Q3 -->
+	<div class="task">
+		<h4>Q3 – Word Formation</h4>
+		<p>Complete the sentence with the correct form of the word in brackets:</p>
+		<p><em>"Her constant ______ (ASSERT) during the negotiations made it clear she would not concede easily."</em></p>
+		<input type="text" placeholder="Type your answer here...">
+	</div>
+
+	<!-- Q4 -->
+	<div class="task">
+		<h4>Q4 – Sentence Transformation</h4>
+		<p>Rewrite the sentence so that it has the same meaning, beginning with the word given.</p>
+		<p><em>"They started the project only after the funding had been approved."</em></p>
+		<p><strong>Begin with:</strong> <em>"Only after..."</em></p>
+		<textarea rows="3" placeholder="Rewrite the sentence here..."></textarea>
+	</div>
+
+	<!-- Q5 -->
+	<div class="task">
+		<h4>Q5 – Lexical Precision (Multiple Choice)</h4>
+		<p>Choose the word that best fits the context:</p>
+		<p><em>"The scientist argued that the data was too ______ to justify drawing such sweeping conclusions."</em></p>
+		<label><input type="radio" name="q5"> a) tenuous</label><br>
+		<label><input type="radio" name="q5"> b) vigorous</label><br>
+		<label><input type="radio" name="q5"> c) prodigious</label><br>
+		<label><input type="radio" name="q5"> d) conspicuous</label>
+	</div>
+	</div>
+
+	<!-- Navigation -->
+	<div class="navigation">
+		<button onclick="prevSection()">Previous</button>
+		<button onclick="nextSection()">Next</button>
+		<button onclick="submitQuiz()" id="submitBtn" style="display:none;">Submit</button>
+	</div>
+	</div>
+	<script src="../scripts/script.js"></script>
+</body>
+</html>
