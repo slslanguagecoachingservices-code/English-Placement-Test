@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Proficiency Quiz</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -267,10 +270,28 @@
         }
 
         .correct-answer {
-            color: #38a169;
+            color: #387ca1;
             font-style: italic;
             margin-top: 5px;
         }
+
+		.download-buttons {
+			display: flex;
+			justify-content: center;
+			gap: 15px;
+			margin-top: 20px;
+			}
+			.btn-download {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-weight: bold;
+			color: white;
+			}
+			.btn-pdf { background: #667eea; }
+			.btn-img { background: #2d9cdb; }
+		.btn-download:hover { opacity: 0.9; }
 
         @media (max-width: 600px) {
             .container {
@@ -862,6 +883,11 @@
             <div class="progress-bar">
                 <div class="progress" style="width: 100%"></div>
             </div>
+			<div class="download-buttons">
+				<button class="btn-download btn-pdf" id="downloadPDF">Download PDF</button>
+				<button class="btn-download btn-img" id="downloadImage">Download Screenshot</button>
+			</div>
+
             <div class="results-section">
                 <h1>Quiz Results</h1>
                 <div class="score-display" id="scoreDisplay"></div>
@@ -1142,6 +1168,30 @@ function startQuiz() {
   startTimer(); // start the countdown only when quiz begins
   goToSection(1);
 }
+
+// 📥 PDF download
+document.getElementById("downloadPDF").addEventListener("click", () => {
+  const element = document.getElementById("quiz-results"); // results wrapper
+  const options = {
+    margin: [0.5, 0.5, 0.5, 0.5],
+    filename: "SLS-Quiz-Results.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    pagebreak: { mode: ["css", "legacy"] } // ensures long results split into multiple pages
+  };
+  html2pdf().set(options).from(element).save();
+});
+
+// 📸 Screenshot download
+document.getElementById("downloadImage").addEventListener("click", () => {
+  html2canvas(document.getElementById("quiz-results"), { scale: 2 }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "SLS-Quiz-Results.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+});
 
     </script>
 </body>
