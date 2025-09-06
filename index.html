@@ -884,29 +884,35 @@
                 <div class="progress" style="width: 100%"></div>
             </div>
 			<div class="download-buttons">
-				<button class="btn-download btn-pdf" id="downloadPDF">Download PDF</button>
-				<button class="btn-download btn-img" id="downloadImage">Download Screenshot</button>
+				<button class="btn-download btn-pdf" id="downloadSummaryPDF">📄 Download Summary PDF</button>
+				<button class="btn-download btn-pdf" id="downloadFullPDF">📑 Download Full Results PDF</button>
+				<button class="btn-download btn-img" id="downloadImage">📸 Save Screenshot</button>
 			</div>
 
-            <div class="results-section">
-                <h1>Quiz Results</h1>
-                <div class="score-display" id="scoreDisplay"></div>
-                <div id="levelBadge" class="level-badge"></div>
-                
-                <div class="feedback" id="feedbackSection">
-                    <h3>Your English Level Assessment</h3>
-                    <div id="levelDescription"></div>
-                </div>
 
-                <div class="answer-review" id="answerReview">
-                    <h3>Answer Review</h3>
-                    <div id="reviewContent"></div>
-                </div>
+            <div class="results-section" id="quiz-results">
+				<div id="summary-section">
+					<h1>Quiz Results</h1>
+					<div class="score-display" id="scoreDisplay"></div>
+					<div id="levelBadge" class="level-badge"></div>
 
-                <div class="navigation">
-                    <button class="btn btn-primary" onclick="restartQuiz()">Take Quiz Again</button>
-                </div>
-            </div>
+					<div class="feedback" id="feedbackSection">
+						<h3>Your English Level Assessment</h3>
+						<div id="levelDescription"></div>
+					</div>
+				</div>
+
+				<div id="full-section">
+					<div class="answer-review" id="answerReview">
+						<h3>Answer Review</h3>
+						<div id="reviewContent"></div>
+					</div>
+				</div>
+
+				<div class="navigation">
+					<button class="btn btn-primary" onclick="restartQuiz()">Take Quiz Again</button>
+				</div>
+			</div>
         </div>
     </div>
 
@@ -1169,29 +1175,45 @@ function startQuiz() {
   goToSection(1);
 }
 
-// 📥 PDF download
-document.getElementById("downloadPDF").addEventListener("click", () => {
-  const element = document.getElementById("quiz-results"); // results wrapper
+// ===== PDF & Screenshot Downloads =====
+
+// 📄 Summary PDF
+document.getElementById("downloadSummaryPDF").addEventListener("click", () => {
+  const element = document.getElementById("summary-section");
   const options = {
     margin: [0.5, 0.5, 0.5, 0.5],
-    filename: "SLS-Quiz-Results.pdf",
+    filename: "SLS-Quiz-Summary.pdf",
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: { scale: 2 },
-    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    pagebreak: { mode: ["css", "legacy"] } // ensures long results split into multiple pages
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
   };
   html2pdf().set(options).from(element).save();
 });
 
-// 📸 Screenshot download
+// 📑 Full Results PDF
+document.getElementById("downloadFullPDF").addEventListener("click", () => {
+  const element = document.getElementById("quiz-results");
+  const options = {
+    margin: [0.5, 0.5, 0.5, 0.5],
+    filename: "SLS-Quiz-Full-Results.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2 },
+    jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    pagebreak: { mode: ["css", "legacy"] }
+  };
+  html2pdf().set(options).from(element).save();
+});
+
+// 📸 Screenshot (entire visible results page)
 document.getElementById("downloadImage").addEventListener("click", () => {
-  html2canvas(document.getElementById("results"), { scale: 2 }).then(canvas => {
+  html2canvas(document.getElementById("quiz-results"), { scale: 2 }).then(canvas => {
     const link = document.createElement("a");
     link.download = "SLS-Quiz-Results.png";
     link.href = canvas.toDataURL("image/png");
     link.click();
   });
 });
+
 
     </script>
 </body>
