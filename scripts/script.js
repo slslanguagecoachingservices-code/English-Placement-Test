@@ -114,3 +114,92 @@ document.getElementById("downloadRecording").addEventListener("click", () => {
     a.click();
     URL.revokeObjectURL(url);
 });
+
+// ====== SECTION ANSWER KEYS ======
+const answerKey = {
+  // --- Section 3 (Reading) ---
+  r1: "b",
+  r2: "absorb disturbances",
+  r3: "a",
+  r4: "b",
+  r5: "c",
+
+  // --- Section 4 (Listening) ---
+  q1: "b",
+  q2: "a",
+  q3: ["collaboration", "societal demand"], // accept two key ideas
+  q4: "a",
+  q5: "c",
+
+  // --- Section 5 (Grammar & Vocabulary) ---
+  g1: "Hardly had I arrived at the conference when I realized I had left my notes at home.",
+  g2: "a",
+  g3: "assertiveness",
+  g4: "Only after the funding had been approved did they start the project.",
+  g5: "a"
+};
+
+// ====== QUIZ SUBMIT FUNCTION ======
+function submitQuiz() {
+  let score = 0;
+  let totalQs = 0;
+  let results = "<h2>Results</h2>";
+
+  // === Helper for radio questions ===
+  function checkRadio(qName, correct, label) {
+    totalQs++;
+    let selected = document.querySelector(`input[name='${qName}']:checked`);
+    if (selected && selected.value === correct) {
+      score++; results += `<p>${label} ✅ Correct</p>`;
+    } else {
+      results += `<p>${label} ❌ Correct Answer: ${correct}</p>`;
+    }
+  }
+
+  // === Helper for text input questions ===
+  function checkText(qName, correct, label, options=[]) {
+    totalQs++;
+    let input = document.querySelector(`[name='${qName}']`);
+    if (!input) return;
+    let ans = input.value.trim().toLowerCase();
+
+    // allow synonyms / multiple answers
+    let accepted = [correct.toLowerCase(), ...options.map(o=>o.toLowerCase())];
+
+    if (accepted.some(a => ans.includes(a))) {
+      score++; results += `<p>${label} ✅ Correct</p>`;
+    } else {
+      results += `<p>${label} ❌ Correct Answer: ${correct}</p>`;
+    }
+  }
+
+  // === Section 3 ===
+  results += "<h3>Section 3: Reading</h3>";
+  checkRadio("r1", answerKey.r1, "Q1");
+  checkText("r2", answerKey.r2, "Q2");
+  checkRadio("r3", answerKey.r3, "Q3");
+  checkRadio("r4", answerKey.r4, "Q4");
+  checkRadio("r5", answerKey.r5, "Q5");
+
+  // === Section 4 ===
+  results += "<h3>Section 4: Listening</h3>";
+  checkRadio("q1", answerKey.q1, "Q1");
+  checkRadio("q2", answerKey.q2, "Q2");
+  checkText("q3", "collaboration", "Q3", ["chance", "societal demand"]);
+  checkRadio("q4", answerKey.q4, "Q4");
+  checkRadio("q5", answerKey.q5, "Q5");
+
+  // === Section 5 ===
+  results += "<h3>Section 5: Grammar & Vocabulary</h3>";
+  checkText("g1", answerKey.g1, "Q1", ["had arrived", "had left"]); 
+  checkRadio("g2", answerKey.g2, "Q2");
+  checkText("g3", answerKey.g3, "Q3");
+  checkText("g4", answerKey.g4, "Q4", ["did they start the project"]);
+  checkRadio("g5", answerKey.g5, "Q5");
+
+  // === Final Score ===
+  results += `<h3>Final Score: ${score} / ${totalQs}</h3>`;
+
+  // Replace body with results
+  document.body.innerHTML = results;
+}

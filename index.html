@@ -1,205 +1,1115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLS English Placement Test</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(to bottom right, #dff3ff, #ffeaea);
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Proficiency Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-      background-color: #ffffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-	  top: 0;
-	  z-index: 1000; /* keeps it above other content */
-	  position: sticky;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-      color: #0E4C92;
-    }
-    header p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #444;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #66cbea 0%, #0587ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
 
-    main {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-    }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 0.6s ease-out;
+        }
 
-    main h2 {
-      color: #E76F51;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      text-align: center;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .intro {
-      text-align: center;
-      line-height: 1.8;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
+        .page {
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
 
-    .card-container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center; /* centers items in the last row */
-		gap: 1.5rem;
-		margin-bottom: 2rem;
-    }
+        .page.active {
+            display: block;
+        }
 
-    .card {
-      background: #f9fcff;
-      border: 1px solid #e6f0f8;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      transition: 0.3s;
-	  flex: 1 1 260px; /* min width 260px, flexible grow */
-  max-width: 320px; /* optional */
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .card h3 {
-      color: #0E4C92;
-      margin-bottom: 0.8rem;
-      font-size: 1.3rem;
-    }
-    .card p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #555;
-    }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
 
-    .important {
-      background: #fff5f5;
-      border-left: 6px solid #E76F51;
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      font-size: 1rem;
-    }
+        h1 {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
 
-    .steps {
-      margin: 2rem 0;
-    }
-    .steps h3 {
-      color: #0E4C92;
-      margin-bottom: 1rem;
-    }
-    .steps ol {
-      line-height: 1.8;
-      font-size: 1rem;
-    }
+        h2 {
+            color: #0587ff;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #0587ff;
+            padding-bottom: 10px;
+        }
 
-    .btn-container {
-      text-align: center;
-      margin-top: 2.5rem;
-    }
-    .btn {
-      background: #0E4C92;
-      color: white;
-      padding: 1rem 3rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 1.3rem;
-      transition: 0.3s ease;
-      display: inline-block;
-    }
-    .btn:hover {
-      background: #E76F51;
-      transform: translateY(-3px);
-    }
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: center;
+        }
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 4rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
-  </style>
+        .question {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #0587ff;
+            transition: all 0.3s ease;
+        }
+
+        .question:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+
+        .question h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: #0587ff;
+            background: #f7faff;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #0587ff;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #aaea66, #0587ff);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #0587ff);
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+		#quiz-timer {
+			font-size: 1rem;
+			font-weight: bold;
+			color: #0587ff; /* your blue */
+			text-align: right;
+			margin: 10px 20px;
+		}
+
+
+        .results-section {
+            text-align: center;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .beginner { background: #fed7d7; color: #c53030; }
+        .elementary { background: #feebc8; color: #dd6b20; }
+        .intermediate { background: #faf089; color: #b7791f; }
+        .upper-intermediate { background: #c6f6d5; color: #2d7d32; }
+        .advanced { background: #bee3f8; color: #2b6cb0; }
+
+        .feedback {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .answer-review {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .answer-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #cbd5e0;
+        }
+
+        .correct { border-left-color: #38a169; background: #f0fff4; }
+        .incorrect { border-left-color: #e53e3e; background: #fff5f5; }
+
+        .answer-text {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .correct-answer {
+            color: #38a169;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>SLS English Placement Test</h1>
-    <p>Your first step towards IELTS success</p>
-  </header>
+    <div class="container">
+        <!-- Introduction Page -->
+        <div id="intro" class="page active">
+            <h1>English Proficiency Quiz</h1>
+            <div class="intro-text">
+                <p>Welcome to our comprehensive English proficiency assessment!</p>
+                <br>
+                <p>This quiz will evaluate your English language skills across various areas including:</p>
+                <ul style="text-align: left; max-width: 500px; margin: 20px auto;">
+                    <li>Conversational English and appropriate responses</li>
+                    <li>Grammar and sentence structure</li>
+                    <li>Vocabulary and word choice</li>
+                    <li>Advanced grammar constructions</li>
+                    <li>Complex sentence patterns</li>
+                </ul>
+                <br>
+                <p>The quiz contains <strong>22 questions</strong> divided into 5 sections. At the end, you'll receive a detailed assessment of your English level and personalized feedback on areas for improvement.</p>
+                <br>
+                <p><em>Take your time and choose the best answer for each question.</em></p>
+            </div>
+            <div class="navigation">
+                <div></div>
+                <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+            </div>
+        </div>
 
-  <main>
-    <h2>Welcome to Your Journey</h2>
+        <!-- Section 1: Conversational English -->
+        <div id="section1" class="page">
+            <div class="progress-bar">
+                <div class="progress" style="width: 20%"></div>
+            </div>
+			<!-- Timer -->
+			 <div id="quiz-timer">Time Left: <span id="time">15:00</span></div>
 
-    <div class="intro">
-      <p>
-        At <strong>SLS</strong>, we believe that great results start with the right preparation.  
-        Before you begin your IELTS class, this placement test helps us understand your skills,  
-        strengths, and areas where we can give you the support you need.  
-      </p>
+            <h2>Section 1: Conversational English</h2>
+            <p style="margin-bottom: 25px; color: #666;">Choose the best response for each conversation.</p>
+
+            <div class="question">
+                <h3>1. Can I park here?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="A">
+                        Sorry, I did that.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="B">
+                        It's the same place.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="C">
+                        Only for half an hour.
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>2. What colour will you paint the children's bedroom?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="A">
+                        I hope it was right.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="B">
+                        We can't decide.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="C">
+                        It wasn't very difficult.
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>3. I can't understand this email.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="A">
+                        Would you like some help?
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="B">
+                        Don't you know?
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="C">
+                        I suppose you can.
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>4. I'd like two tickets for tomorrow night.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="A">
+                        How much did you pay?
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="B">
+                        Afternoon and evening.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="C">
+                        I'll just check for you.
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>5. Shall we go to the gym now?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="A">
+                        I'm too tired.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="B">
+                        It's very good.
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="C">
+                        Not at all.
+                    </label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="goToPage('intro')">← Back</button>
+                <button class="btn btn-primary" onclick="goToSection(2)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- Section 2: Basic Grammar -->
+        <div id="section2" class="page">
+            <div class="progress-bar">
+                <div class="progress" style="width: 40%"></div>
+            </div>
+            <h2>Section 2: Basic Grammar</h2>
+            <p style="margin-bottom: 25px; color: #666;">Choose the correct word to complete each sentence.</p>
+
+            <div class="question">
+                <h3>6. His eyes were ...... bad that he couldn't read the number plate of the car in front.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="A">
+                        such
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="B">
+                        too
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="C">
+                        so
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="D">
+                        very
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>7. The company needs to decide ...... and for all what its position is on this point.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q7" value="A">
+                        here
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="B">
+                        once
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="C">
+                        first
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q7" value="D">
+                        finally
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>8. Don't put your cup on the ...... of the table - someone will knock it off.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q8" value="A">
+                        outside
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="B">
+                        edge
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="C">
+                        boundary
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q8" value="D">
+                        border
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>9. I'm sorry - I didn't ...... to disturb you.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="A">
+                        hope
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="B">
+                        think
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="C">
+                        mean
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="D">
+                        suppose
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>10. The singer ended the concert ...... her most popular song.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="A">
+                        by
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="B">
+                        with
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="C">
+                        in
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="D">
+                        as
+                    </label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="goToSection(1)">← Previous</button>
+                <button class="btn btn-primary" onclick="goToSection(3)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- Section 3: Intermediate Grammar -->
+        <div id="section3" class="page">
+            <div class="progress-bar">
+                <div class="progress" style="width: 60%"></div>
+            </div>
+            <h2>Section 3: Intermediate Grammar</h2>
+            <p style="margin-bottom: 25px; color: #666;">Choose the best option to complete each sentence.</p>
+
+            <div class="question">
+                <h3>11. Would you mind ...... these plates a wipe before putting them in the cupboard?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q11" value="A">
+                        making
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q11" value="B">
+                        doing
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q11" value="C">
+                        getting
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q11" value="D">
+                        giving
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>12. I was looking forward ...... at the new restaurant, but it was closed.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q12" value="A">
+                        to eat
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="B">
+                        to have eaten
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="C">
+                        to eating
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q12" value="D">
+                        eating
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>13. ...... tired Melissa is when she gets home from work, she always makes time to say goodnight to the children.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q13" value="A">
+                        Whatever
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="B">
+                        No matter how
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="C">
+                        However much
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q13" value="D">
+                        Although
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>14. It was only ten days ago ...... she started her new job.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q14" value="A">
+                        then
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q14" value="B">
+                        since
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q14" value="C">
+                        after
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q14" value="D">
+                        that
+                    </label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="goToSection(2)">← Previous</button>
+                <button class="btn btn-primary" onclick="goToSection(4)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- Section 4: Advanced Vocabulary -->
+        <div id="section4" class="page">
+            <div class="progress-bar">
+                <div class="progress" style="width: 80%"></div>
+            </div>
+            <h2>Section 4: Advanced Vocabulary</h2>
+            <p style="margin-bottom: 25px; color: #666;">Choose the best word to complete each sentence.</p>
+
+            <div class="question">
+                <h3>15. The shop didn't have the shoes I wanted, but they've ...... a pair specially for me.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q15" value="A">
+                        booked
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="B">
+                        ordered
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="C">
+                        commanded
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="D">
+                        asked
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>16. Have you got time to discuss your work now or are you ...... to leave?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q16" value="A">
+                        thinking
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="B">
+                        round
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="C">
+                        planned
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="D">
+                        about
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>17. She came to live here ...... a month ago.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q17" value="A">
+                        quite
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q17" value="B">
+                        beyond
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q17" value="C">
+                        already
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q17" value="D">
+                        almost
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>18. Once the plane is in the air, you can ...... your seat belts if you wish.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q18" value="A">
+                        undress
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="B">
+                        unfasten
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="C">
+                        unlock
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="D">
+                        untie
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>19. I left my last job because I had no ...... to travel.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q19" value="A">
+                        place
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="B">
+                        position
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="C">
+                        opportunity
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="D">
+                        possibility
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>20. It wasn't a bad crash and ...... damage was done to my car.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q20" value="A">
+                        little
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q20" value="B">
+                        small
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q20" value="C">
+                        light
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q20" value="D">
+                        mere
+                    </label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="goToSection(3)">← Previous</button>
+                <button class="btn btn-primary" onclick="goToSection(5)">Next Section →</button>
+            </div>
+        </div>
+
+        <!-- Section 5: Advanced Grammar -->
+        <div id="section5" class="page">
+            <div class="progress-bar">
+                <div class="progress" style="width: 95%"></div>
+            </div>
+            <h2>Section 5: Advanced Grammar</h2>
+            <p style="margin-bottom: 25px; color: #666;">Choose the best option to complete each sentence.</p>
+
+            <div class="question">
+                <h3>21. I'd rather you ...... to her why we can't go.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q21" value="A">
+                        would explain
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q21" value="B">
+                        explained
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q21" value="C">
+                        to explain
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q21" value="D">
+                        will explain
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>22. Before making a decision, the leader considered all ...... of the argument.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q22" value="A">
+                        sides
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q22" value="B">
+                        features
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q22" value="C">
+                        perspectives
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q22" value="D">
+                        shades
+                    </label>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="goToSection(4)">← Previous</button>
+                <button class="btn btn-primary" onclick="finishQuiz()">Finish Quiz</button>
+            </div>
+        </div>
+
+        <!-- Results Page -->
+        <div id="results" class="page">
+            <div class="progress-bar">
+                <div class="progress" style="width: 100%"></div>
+            </div>
+            <div class="results-section">
+                <h1>Quiz Results</h1>
+                <div class="score-display" id="scoreDisplay"></div>
+                <div id="levelBadge" class="level-badge"></div>
+                
+                <div class="feedback" id="feedbackSection">
+                    <h3>Your English Level Assessment</h3>
+                    <div id="levelDescription"></div>
+                </div>
+
+                <div class="answer-review" id="answerReview">
+                    <h3>Answer Review</h3>
+                    <div id="reviewContent"></div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn btn-primary" onclick="restartQuiz()">Take Quiz Again</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="card-container">
-      <div class="card">
-        <h3>🎤 Speaking</h3>
-        <p>Record your voice and practice responding to real IELTS-style prompts with a time limit.</p>
-      </div>
-      <div class="card">
-        <h3>📖 Reading</h3>
-        <p>Analyze academic texts and answer comprehension questions that test inference and detail.</p>
-      </div>
-      <div class="card">
-        <h3>🎧 Listening</h3>
-        <p>Respond to audio clips that simulate real exam conditions, testing focus and accuracy.</p>
-      </div>
-      <div class="card">
-        <h3>✍ Writing</h3>
-        <p>Practice essays, reports, and formal writing tasks to assess clarity, structure, and grammar.</p>
-      </div>
-      <div class="card">
-        <h3>📝 Grammar & Vocabulary</h3>
-        <p>High-level questions test your precision, range, and understanding of advanced English usage.</p>
-      </div>
-    </div>
+    <script>
+        const correctAnswers = {
+            q1: 'C', q2: 'B', q3: 'A', q4: 'C', q5: 'A',
+            q6: 'C', q7: 'B', q8: 'B', q9: 'C', q10: 'B',
+            q11: 'D', q12: 'C', q13: 'B', q14: 'D',
+            q15: 'B', q16: 'D', q17: 'D', q18: 'B', q19: 'C', q20: 'A',
+            q21: 'B', q22: 'C'
+        };
 
-    <div class="important">
-      <p><strong>Why this step matters:</strong>  
-      This is not just a test — it’s a roadmap.  
-      By understanding your current level, we can personalize your IELTS learning plan,  
-      build confidence, and set you up for exam success.</p>
-    </div>
+        const questionTexts = {
+            q1: 'Can I park here?',
+            q2: 'What colour will you paint the children\'s bedroom?',
+            q3: 'I can\'t understand this email.',
+            q4: 'I\'d like two tickets for tomorrow night.',
+            q5: 'Shall we go to the gym now?',
+            q6: 'His eyes were ___ bad that he couldn\'t read the number plate.',
+            q7: 'The company needs to decide ___ and for all what its position is.',
+            q8: 'Don\'t put your cup on the ___ of the table.',
+            q9: 'I\'m sorry - I didn\'t ___ to disturb you.',
+            q10: 'The singer ended the concert ___ her most popular song.',
+            q11: 'Would you mind ___ these plates a wipe before putting them in the cupboard?',
+            q12: 'I was looking forward ___ at the new restaurant, but it was closed.',
+            q13: '___ tired Melissa is when she gets home from work, she always makes time to say goodnight to the children.',
+            q14: 'It was only ten days ago ___ she started her new job.',
+            q15: 'The shop didn\'t have the shoes I wanted, but they\'ve ___ a pair specially for me.',
+            q16: 'Have you got time to discuss your work now or are you ___ to leave?',
+            q17: 'She came to live here ___ a month ago.',
+            q18: 'Once the plane is in the air, you can ___ your seat belts if you wish.',
+            q19: 'I left my last job because I had no ___ to travel.',
+            q20: 'It wasn\'t a bad crash and ___ damage was done to my car.',
+            q21: 'I\'d rather you ___ to her why we can\'t go.',
+            q22: 'Before making a decision, the leader considered all ___ of the argument.'
+        };
 
-    <div class="steps">
-      <h3>What happens after the test?</h3>
-      <ol>
-        <li>✅ We review your performance in each section.</li>
-        <li>✅ You’ll get detailed feedback on your strengths and weaknesses.</li>
-        <li>✅ Our instructors will recommend a tailored learning plan for your IELTS preparation.</li>
-      </ol>
-    </div>
+        const answerOptions = {
+            q1: ['Sorry, I did that.', 'It\'s the same place.', 'Only for half an hour.'],
+            q2: ['I hope it was right.', 'We can\'t decide.', 'It wasn\'t very difficult.'],
+            q3: ['Would you like some help?', 'Don\'t you know?', 'I suppose you can.'],
+            q4: ['How much did you pay?', 'Afternoon and evening.', 'I\'ll just check for you.'],
+            q5: ['I\'m too tired.', 'It\'s very good.', 'Not at all.'],
+            q6: ['such', 'too', 'so', 'very'],
+            q7: ['here', 'once', 'first', 'finally'],
+            q8: ['outside', 'edge', 'boundary', 'border'],
+            q9: ['hope', 'think', 'mean', 'suppose'],
+            q10: ['by', 'with', 'in', 'as'],
+            q11: ['making', 'doing', 'getting', 'giving'],
+            q12: ['to eat', 'to have eaten', 'to eating', 'eating'],
+            q13: ['Whatever', 'No matter how', 'However much', 'Although'],
+            q14: ['then', 'since', 'after', 'that'],
+            q15: ['booked', 'ordered', 'commanded', 'asked'],
+            q16: ['thinking', 'round', 'planned', 'about'],
+            q17: ['quite', 'beyond', 'already', 'almost'],
+            q18: ['undress', 'unfasten', 'unlock', 'untie'],
+            q19: ['place', 'position', 'opportunity', 'possibility'],
+            q20: ['little', 'small', 'light', 'mere'],
+            q21: ['would explain', 'explained', 'to explain', 'will explain'],
+            q22: ['sides', 'features', 'perspectives', 'shades']
+        };
 
-    <div class="btn-container">
-      <a href="pages/page1.html" class="btn">🚀 Start the Test</a>
-    </div>
-  </main>
+        function startQuiz() {
+            goToSection(1);
+        }
 
-  <footer>
-    &copy; 2025 SLS English | Preparing you for IELTS excellence
-  </footer>
+        function goToPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function goToSection(sectionNum) {
+            goToPage('section' + sectionNum);
+        }
+
+        function finishQuiz() {
+            calculateResults();
+            goToPage('results');
+        }
+
+        function restartQuiz() {
+            // Clear all answers
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.checked = false;
+            });
+            goToPage('intro');
+        }
+
+        function calculateResults() {
+            let score = 0;
+            let totalQuestions = 22;
+            let userAnswers = {};
+            let sectionScores = {
+                conversation: 0,
+                basicGrammar: 0,
+                intermediateGrammar: 0,
+                vocabulary: 0,
+                advancedGrammar: 0
+            };
+
+            // Calculate score and collect user answers
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                if (selectedAnswer) {
+                    userAnswers[questionName] = selectedAnswer.value;
+                    if (selectedAnswer.value === correctAnswers[questionName]) {
+                        score++;
+                        // Track section scores
+                        if (i <= 5) sectionScores.conversation++;
+                        else if (i <= 10) sectionScores.basicGrammar++;
+                        else if (i <= 14) sectionScores.intermediateGrammar++;
+                        else if (i <= 20) sectionScores.vocabulary++;
+                        else sectionScores.advancedGrammar++;
+                    }
+                } else {
+                    userAnswers[questionName] = null;
+                }
+            }
+
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            // Display score
+            document.getElementById('scoreDisplay').textContent = `${score}/${totalQuestions} (${percentage}%)`;
+            
+            // Determine level and display badge
+            let level = '';
+            let levelClass = '';
+            let levelDescription = '';
+            
+            if (percentage >= 90) {
+                level = 'Advanced';
+                levelClass = 'advanced';
+                levelDescription = 'Excellent! You have an advanced level of English with strong skills across all areas. You demonstrate sophisticated understanding of grammar, vocabulary, and conversational English.';
+            } else if (percentage >= 75) {
+                level = 'Upper Intermediate';
+                levelClass = 'upper-intermediate';
+                levelDescription = 'Very good! You have an upper intermediate level of English. You show solid competency in most areas with room for refinement in advanced grammar and vocabulary.';
+            } else if (percentage >= 60) {
+                level = 'Intermediate';
+                levelClass = 'intermediate';
+                levelDescription = 'Good progress! You have an intermediate level of English. You understand basic to moderate grammar and vocabulary, with some areas needing improvement.';
+            } else if (percentage >= 40) {
+                level = 'Elementary';
+                levelClass = 'elementary';
+                levelDescription = 'You\'re making progress! You have an elementary level of English. Focus on building your foundation in basic grammar, vocabulary, and conversational skills.';
+            } else {
+                level = 'Beginner';
+                levelClass = 'beginner';
+                levelDescription = 'Keep practicing! You\'re at a beginner level. Focus on fundamental grammar rules, basic vocabulary, and simple conversational patterns.';
+            }
+            
+            const levelBadge = document.getElementById('levelBadge');
+            levelBadge.textContent = level;
+            levelBadge.className = `level-badge ${levelClass}`;
+            
+            // Create detailed feedback
+            let feedback = `<p>${levelDescription}</p><br><h4>Detailed Analysis:</h4><ul style="text-align: left; margin: 15px 0;">`;
+            
+            // Section analysis
+            feedback += `<li><strong>Conversational English:</strong> ${sectionScores.conversation}/5 - `;
+            if (sectionScores.conversation >= 4) feedback += 'Excellent understanding of appropriate responses in conversations.';
+            else if (sectionScores.conversation >= 3) feedback += 'Good conversational skills with minor areas for improvement.';
+            else feedback += 'Focus on understanding context and appropriate responses in conversations.';
+            feedback += '</li>';
+            
+            feedback += `<li><strong>Basic Grammar:</strong> ${sectionScores.basicGrammar}/5 - `;
+            if (sectionScores.basicGrammar >= 4) feedback += 'Strong grasp of fundamental grammar structures.';
+            else if (sectionScores.basicGrammar >= 3) feedback += 'Solid understanding of basic grammar with some gaps.';
+            else feedback += 'Review basic grammar rules, including articles, prepositions, and sentence structure.';
+            feedback += '</li>';
+            
+            feedback += `<li><strong>Intermediate Grammar:</strong> ${sectionScores.intermediateGrammar}/4 - `;
+            if (sectionScores.intermediateGrammar >= 3) feedback += 'Good command of complex grammar structures.';
+            else if (sectionScores.intermediateGrammar >= 2) feedback += 'Developing skills in intermediate grammar concepts.';
+            else feedback += 'Work on gerunds, infinitives, and complex sentence structures.';
+            feedback += '</li>';
+            
+            feedback += `<li><strong>Vocabulary:</strong> ${sectionScores.vocabulary}/6 - `;
+            if (sectionScores.vocabulary >= 5) feedback += 'Excellent vocabulary range and word choice.';
+            else if (sectionScores.vocabulary >= 4) feedback += 'Good vocabulary with room for expansion.';
+            else feedback += 'Focus on expanding vocabulary and understanding word collocations.';
+            feedback += '</li>';
+            
+            feedback += `<li><strong>Advanced Grammar:</strong> ${sectionScores.advancedGrammar}/2 - `;
+            if (sectionScores.advancedGrammar >= 2) feedback += 'Excellent mastery of advanced grammatical concepts.';
+            else if (sectionScores.advancedGrammar >= 1) feedback += 'Good understanding with minor refinements needed.';
+            else feedback += 'Study subjunctive mood, conditional structures, and advanced grammar patterns.';
+            feedback += '</li>';
+            
+            feedback += '</ul>';
+            
+            document.getElementById('levelDescription').innerHTML = feedback;
+            
+            // Generate answer review
+            generateAnswerReview(userAnswers);
+        }
+
+        function generateAnswerReview(userAnswers) {
+            let reviewHTML = '';
+            
+            for (let i = 1; i <= 22; i++) {
+                const questionName = 'q' + i;
+                const userAnswer = userAnswers[questionName];
+                const correctAnswer = correctAnswers[questionName];
+                const isCorrect = userAnswer === correctAnswer;
+                
+                const answerClass = isCorrect ? 'correct' : 'incorrect';
+                const answerStatus = isCorrect ? '✓' : '✗';
+                
+                reviewHTML += `<div class="answer-item ${answerClass}">`;
+                reviewHTML += `<div class="answer-text">${answerStatus} Question ${i}: ${questionTexts[questionName]}</div>`;
+                
+                if (userAnswer) {
+                    const userAnswerText = answerOptions[questionName][userAnswer.charCodeAt(0) - 65];
+                    reviewHTML += `<div>Your answer: ${userAnswerText}</div>`;
+                } else {
+                    reviewHTML += `<div>Your answer: (No answer selected)</div>`;
+                }
+                
+                if (!isCorrect) {
+                    const correctAnswerText = answerOptions[questionName][correctAnswer.charCodeAt(0) - 65];
+                    reviewHTML += `<div class="correct-answer">Correct answer: ${correctAnswerText}</div>`;
+                }
+                
+                reviewHTML += '</div>';
+            }
+            
+            document.getElementById('reviewContent').innerHTML = reviewHTML;
+        }
+
+		// ===== QUIZ TIMER =====
+let totalTime = 15 * 60; // 15 minutes in seconds
+let timerInterval;
+
+function startTimer() {
+  const timerDisplay = document.getElementById("time");
+
+  timerInterval = setInterval(() => {
+    let minutes = Math.floor(totalTime / 60);
+    let seconds = totalTime % 60;
+
+    timerDisplay.textContent =
+      `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+    if (totalTime <= 0) {
+      clearInterval(timerInterval);
+      alert("⏰ Time’s up! Submitting your quiz.");
+      finishQuiz(); // auto-submit quiz
+    }
+
+    totalTime--;
+  }, 1000);
+}
+
+// Start timer when quiz begins
+document.addEventListener("DOMContentLoaded", () => {
+  startTimer();
+});
+
+    </script>
 </body>
 </html>

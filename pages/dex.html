@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLS English Placement Test</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right, #dff3ff, #ffeaea);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background-color: #ffffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	  top: 0;
+	  z-index: 1000; /* keeps it above other content */
+	  position: sticky;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      color: #0E4C92;
+    }
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    main h2 {
+      color: #E76F51;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .intro {
+      text-align: center;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .card-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center; /* centers items in the last row */
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #f9fcff;
+      border: 1px solid #e6f0f8;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: 0.3s;
+	  flex: 1 1 260px; /* min width 260px, flexible grow */
+  max-width: 320px; /* optional */
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      color: #0E4C92;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .important {
+      background: #fff5f5;
+      border-left: 6px solid #E76F51;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .steps {
+      margin: 2rem 0;
+    }
+    .steps h3 {
+      color: #0E4C92;
+      margin-bottom: 1rem;
+    }
+    .steps ol {
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .btn {
+      background: #0E4C92;
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #E76F51;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SLS English Placement Test</h1>
+    <p>Your first step towards IELTS success</p>
+  </header>
+
+  <main>
+    <h2>Welcome to Your Journey</h2>
+
+    <div class="intro">
+      <p>
+        At <strong>SLS</strong>, we believe that great results start with the right preparation.  
+        Before you begin your IELTS class, this placement test helps us understand your skills,  
+        strengths, and areas where we can give you the support you need.  
+      </p>
+    </div>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>🎤 Speaking</h3>
+        <p>Record your voice and practice responding to real IELTS-style prompts with a time limit.</p>
+      </div>
+      <div class="card">
+        <h3>📖 Reading</h3>
+        <p>Analyze academic texts and answer comprehension questions that test inference and detail.</p>
+      </div>
+      <div class="card">
+        <h3>🎧 Listening</h3>
+        <p>Respond to audio clips that simulate real exam conditions, testing focus and accuracy.</p>
+      </div>
+      <div class="card">
+        <h3>✍ Writing</h3>
+        <p>Practice essays, reports, and formal writing tasks to assess clarity, structure, and grammar.</p>
+      </div>
+      <div class="card">
+        <h3>📝 Grammar & Vocabulary</h3>
+        <p>High-level questions test your precision, range, and understanding of advanced English usage.</p>
+      </div>
+    </div>
+
+    <div class="important">
+      <p><strong>Why this step matters:</strong>  
+      This is not just a test — it’s a roadmap.  
+      By understanding your current level, we can personalize your IELTS learning plan,  
+      build confidence, and set you up for exam success.</p>
+    </div>
+
+    <div class="steps">
+      <h3>What happens after the test?</h3>
+      <ol>
+        <li>✅ We review your performance in each section.</li>
+        <li>✅ You’ll get detailed feedback on your strengths and weaknesses.</li>
+        <li>✅ Our instructors will recommend a tailored learning plan for your IELTS preparation.</li>
+      </ol>
+    </div>
+
+    <div class="btn-container">
+      <a href="pages/part1intro.html" class="btn">🚀 Start the Test</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 SLS English | Preparing you for IELTS excellence
+  </footer>
+</body>
+</html>

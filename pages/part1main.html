@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>C2 English Competence Test</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<header>
+  <h1>C2 English Competence Test</h1>
+  <p>Sections 1–5</p>
+</header>
+
+<div class="container">
+
+  <!-- Section 1 (Writing) -->
+<div class="section active" id="section-1">
+  <h3>Section 1: Writing Skills (C2 Level)</h3>
+  <p><strong>Instructions:</strong> Choose ONE of the following tasks. Write between <em>120–150 words</em>.</p>
+
+  <!-- Task A – Formal Email / Letter -->
+  <div class="task">
+    <h4>Task A – Formal Email</h4>
+    <p><em>
+      "You recently attended an international conference where you met professionals in your field. Write a formal email to one of the keynote speakers to thank them for their talk and explain how it has influenced your future academic or career plans."
+    </em></p>
+    <textarea rows="8" placeholder="Type your email here (120–150 words)..."></textarea>
+  </div>
+
+  <!-- Task B – IELTS-Type Essay -->
+  <div class="task">
+    <h4>Task B – Opinion Essay</h4>
+    <p><em>
+      "Some people argue that the rapid development of artificial intelligence will create more jobs than it destroys, while others believe it will lead to widespread unemployment. Discuss both views and give your own opinion."
+    </em></p>
+    <textarea rows="8" placeholder="Type your essay here (120–150 words)..."></textarea>
+  </div>
+
+  <!-- Task C – CELPIP-Type Survey Response -->
+  <div class="task">
+    <h4>Task C – Responding to a Survey</h4>
+    <p><em>
+      "Your city council has sent out a survey asking residents whether they should invest in building more public parks or expanding digital infrastructure (such as free citywide Wi-Fi). Write a response explaining your preference and supporting reasons."
+    </em></p>
+    <textarea rows="8" placeholder="Type your response here (120–150 words)..."></textarea>
+  </div>
+
+  <!-- Task D – Graph/Diagram Analysis -->
+  <div class="task">
+    <h4>Task D – Graph/Diagram Description</h4>
+    <p><em>
+      "The chart below shows the percentage of energy consumption from renewable and non-renewable sources in five countries. Summarize the key trends and make comparisons where relevant."
+    </em></p>
+    <p><strong>(Note: A chart/diagram will be displayed here)</strong></p>
+    <textarea rows="8" placeholder="Type your analysis here (120–150 words)..."></textarea>
+  </div>
+</div>
+
+
+  <!-- Section 2 (Speaking) -->
+<div class="section" id="section-2">
+  <h3>Section 2: Speaking & Pronunciation (C2 Level)</h3>
+  <p><strong>Instructions:</strong> Answer <em>all three</em> tasks below. 
+  Speak for <em>no more than 1.5 minutes</em> per task. 
+  After completing the section, <em>download your recordings and forward them</em> to your examiner.</p>
+
+  <!-- Task 1 – Abstract Discussion -->
+  <div class="task">
+    <h4>Task 1 – Abstract Discussion</h4>
+    <p><em>Prompt:</em> “To what extent do you think freedom of speech should be limited in modern societies? Discuss possible consequences of both unrestricted and restricted expression.”</p>
+    <div class="recorder" data-task="1"></div>
+    <button class="downloadRecording">Download Recording</button>
+  </div>
+
+  <!-- Task 2 – Interpretation of Data -->
+  <div class="task">
+    <h4>Task 2 – Interpretation of Data</h4>
+    <p><em>Prompt:</em> “Summarize the main findings and predict two long-term consequences that may arise from these trends.”</p>
+    <p><strong>(Note: A chart/infographic will be displayed here)</strong></p>
+    <div class="recorder" data-task="2"></div>
+    <button class="downloadRecording">Download Recording</button>
+  </div>
+
+  <!-- Task 3 – Persuasive Response -->
+  <div class="task">
+    <h4>Task 3 – Persuasive Response</h4>
+    <p><em>Prompt:</em> “Imagine that your city is about to ban private cars in the downtown area. Convince the mayor either to support or oppose this ban, addressing both environmental and economic concerns.”</p>
+    <div class="recorder" data-task="3"></div>
+    <button class="downloadRecording">Download Recording</button>
+  </div>
+</div>
+
+  <!-- Navigation -->
+  <div class="navigation">
+    <button onclick="prevSection()">Previous</button>
+    <button onclick="nextSection()">Next</button>
+    <button onclick="submitQuiz()" id="submitBtn" style="display:none;">Submit</button>
+  </div>
+</div>
+
+<script src="../scripts/script.js"></script>
+</body>
+</html>
