@@ -1185,7 +1185,7 @@ document.getElementById("downloadPDF").addEventListener("click", () => {
 
 // 📸 Screenshot download
 document.getElementById("downloadImage").addEventListener("click", () => {
-  html2canvas(document.getElementById("quiz-results"), { scale: 2 }).then(canvas => {
+  html2canvas(document.getElementById("results"), { scale: 2 }).then(canvas => {
     const link = document.createElement("a");
     link.download = "SLS-Quiz-Results.png";
     link.href = canvas.toDataURL("image/png");
