@@ -19,7 +19,34 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+			flex-direction: column;
+			padding-top: 80px; /* prevent quiz being hidden under header */
         }
+		/* QUIZ HEADER */
+		.quiz-header {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background: #ffffff;
+			padding: 15px 30px;
+			border-bottom: 2px solid #9eebfa;
+			position: fixed;   /* stick to top */
+			top: 0;
+			left: 0;
+			z-index: 1000;
+		}
+
+.quiz-logo img {
+  height: 40px;
+  object-fit: contain;
+}
+
+#quiz-timer {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0587ff; /* blue */
+}
 
         .container {
             background: white;
@@ -184,7 +211,6 @@
 			margin: 10px 20px;
 		}
 
-
         .results-section {
             text-align: center;
         }
@@ -262,6 +288,15 @@
     </style>
 </head>
 <body>
+		<!-- ===== QUIZ HEADER ===== -->
+	<header class="quiz-header">
+	<div class="quiz-logo">
+		<img src="images/logo5.png" alt="SLS Logo">
+	</div>
+	<div id="quiz-timer">
+		Time Left: <span id="time">15:00</span>
+	</div>
+	</header>
     <div class="container">
         <!-- Introduction Page -->
         <div id="intro" class="page active">
@@ -293,9 +328,6 @@
             <div class="progress-bar">
                 <div class="progress" style="width: 20%"></div>
             </div>
-			<!-- Timer -->
-			 <div id="quiz-timer">Time Left: <span id="time">15:00</span></div>
-
             <h2>Section 1: Conversational English</h2>
             <p style="margin-bottom: 25px; color: #666;">Choose the best response for each conversation.</p>
 
@@ -1106,9 +1138,10 @@ function startTimer() {
 }
 
 // Start timer when quiz begins
-document.addEventListener("DOMContentLoaded", () => {
-  startTimer();
-});
+function startQuiz() {
+  startTimer(); // start the countdown only when quiz begins
+  goToSection(1);
+}
 
     </script>
 </body>
